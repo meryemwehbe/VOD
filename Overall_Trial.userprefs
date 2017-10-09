@@ -1,0 +1,19 @@
+﻿<Properties StartupItem="Overall_Trial.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\GoogleVR\Scripts\Video\GvrVideoPlayerTexture.cs">
+    <Files>
+      <File FileName="Assets\Script\StartVideo.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\followCamera.cs" Line="1" Column="1" />
+      <File FileName="Assets\GoogleVR\Scripts\GvrEditorEmulator.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\LocationManager.cs" Line="172" Column="12" />
+      <File FileName="Assets\GoogleVR\Scripts\Video\GvrVideoPlayerTexture.cs" Line="545" Column="18" />
+      <File FileName="Assets\Script\Location.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\pc\Documents\Swisscom\Overall_Trial\Assets\GoogleVR\Scripts\Video\GvrVideoPlayerTexture.cs" line="406" column="3" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

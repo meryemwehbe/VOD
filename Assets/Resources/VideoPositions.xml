@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<videos>
+		<video id="StreamedVideo">
+			<x>0</x>
+			<y>0</y>
+			<z>0</z>
+			<name>http://128.179.193.9:1935/vod/mp4:live2.mp4/manifest.mpd</name>
+		</video>
+		<video id="StreamedVideo">
+			<x>5</x>
+			<y>0</y>
+			<z>0</z>
+			<name>http://128.179.193.9:1935/vod/mp4:live1.mp4/manifest.mpd</name>
+		</video> 
+	</videos>
+</root>
