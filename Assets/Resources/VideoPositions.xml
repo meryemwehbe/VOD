@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
 	<videos>
-		<video id="StreamedVideo">
+		<video id="camera1">
 			<x>0</x>
 			<y>0</y>
 			<z>0</z>
-			<name>http://128.179.193.9:1935/vod/mp4:live2.mp4/manifest.mpd</name>
+			<name>http://192.168.1.162:1935/vod/mp4:cam1_2k_30fps.mp4/manifest.mpd</name>
 		</video>
-		<video id="StreamedVideo">
-			<x>5</x>
+		<video id="camera2">
+			<x>0</x>
 			<y>0</y>
-			<z>0</z>
-			<name>http://128.179.193.9:1935/vod/mp4:live1.mp4/manifest.mpd</name>
-		</video> 
+			<z>-7</z>
+			<name>http://192.168.1.162:1935/vod/mp4:cam2_2k_30fps.mp4/manifest.mpd</name>
+		</video>
+			<video id="camera3">
+			<x>0</x>
+			<y>0</y>
+			<z>-14</z>
+			<name>http://192.168.1.162:1935/vod/mp4:cam3_2k_30fps.mp4/manifest.mpd</name>
+		</video>
 	</videos>
 </root>

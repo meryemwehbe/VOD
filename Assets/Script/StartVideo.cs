@@ -7,9 +7,7 @@ public class StartVideo : MonoBehaviour {
 	GvrVideoPlayerTexture texture;
 	VideoControlsManager video_control;
 	//public Text debugtext;
-	public GameObject quad;
 	public bool enter_no = false , enter_yes = false;
-	public GameObject Sphere,Cube;
 	// Use this for initialization
 	void Start () {
 		texture = GetComponent<GvrVideoPlayerTexture> ();

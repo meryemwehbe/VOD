@@ -31,6 +31,7 @@ public class LocationManager : MonoBehaviour {
 	TimeSpan start;
 	int time_elapsed = 0;
 	string urlwithtime;
+	GameObject camera;
 
 	// Use this for initialization
 	void Start () {
@@ -46,8 +47,10 @@ public class LocationManager : MonoBehaviour {
 
 		}*/
 		//VideoStream.videoURL = "https://storage.googleapis.com/daydream-deveng.appspot.com/japan360/dash/japan_day06_eagle2_shot0005-2880px_40000kbps.mpd";
+
 		start = DateTime.Now.TimeOfDay;
 		xmlName = "VideoPositions";
+		camera = GameObject.FindWithTag("MainCamera");
 		videostream = proj_sphere.GetComponent<GvrVideoPlayerTexture>();
 		Debug.Log (videostream);
 		locationPositions = new List<VideoClass> ();
@@ -64,7 +67,10 @@ public class LocationManager : MonoBehaviour {
 		debugtext.text = "Start time = " + start
 		+ "\nTime now = " + DateTime.Now.TimeOfDay
 		+ "\nTime elapsed = " + duration
-			+ "\nurltime = "+ urlwithtime;
+			+ "\nurltime = "+ urlwithtime + "\nState = "+ videostream.PlayerState;
+		//Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+        long milliseconds = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+		WriteData(" "+milliseconds+" "+camera.transform.rotation.eulerAngles+ " " +currentVideo);
 		//Debug.Log (GvrEditorEmulator.HeadRotation);
 
 	}
@@ -176,11 +182,60 @@ public class LocationManager : MonoBehaviour {
 		int time_elapsed_sec = (time_elapsed.Minutes*60 + time_elapsed.Seconds)*1000;
 		urlwithtime = videoName + "?wowzaplaystart=" + time_elapsed_sec;
 		videostream.videoURL = urlwithtime;
+		videostream.CleanupVideo ();
 		videostream.ReInitializeVideo();
-		videostream.RestartVideo ();
+		//Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+        long milliseconds = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+		WriteData(""+milliseconds+ "new video started "+camera.transform.rotation.eulerAngles+ " " +currentVideo);
 		//videostream.Getinfo ();
 		Debug.Log(videostream.videoURL);
 	}
-		
+
+	private void WriteData(string data){
+		string[] stringSeparators = new string[] {"[stop]"};
+		string path = GetAndroidContextExternalFilesDir().Split('0')[0] + "/0/Download/headlogs.txt";
+		// This text is added only once to the file.
+		if (!File.Exists(path)) 
+		{
+			// Create a file to write to.
+			using (StreamWriter sw = File.CreateText(path)) 
+			{
+				sw.WriteLine(data);
+			}	
+		}
+
+		// This text is always added, making the file longer over time
+		// if it is not deleted.
+		using (StreamWriter sw = File.AppendText(path)) 
+		{
+			sw.WriteLine(data);
+		}	
+
+	}
+
+
+	private String GetAndroidContextExternalFilesDir()
+	{
+		string path = "";
+
+		if (Application.platform == RuntimePlatform.Android)
+		{
+			try
+			{
+				using (AndroidJavaClass ajc = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+				{
+					using (AndroidJavaObject ajo = ajc.GetStatic<AndroidJavaObject>("currentActivity"))
+					{
+						path = ajo.Call<AndroidJavaObject>("getExternalFilesDir", null).Call<string>("getAbsolutePath");
+					}
+				}
+			}
+			catch (Exception e)
+			{
+				Debug.LogWarning("Error fetching native Android external storage dir: " + e.Message);
+			}
+		}
+		return path;
+	}
 
 }
