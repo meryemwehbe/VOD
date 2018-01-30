@@ -11,14 +11,14 @@ The challenges of this project are many. One is the hardware required, as for ea
 ## Prerequisites
 
 * Unity on pc 
-* Google Daydream and Cardboard on the phone
+* A phone compatible with Google Daydream and Cardboard 
 * Wowza Streaming Engine Account
 * Phone and Wowza server connected to the same network 
 	
 ## Setup the Orah cameras and configure them with the Wowza Streaming Engine 
 ### Wowza Streaming Engine
 
-* Create an Account on Wowza and setup the engine on your local computer 
+* Create an Account on Wowza and setup the engine on your local computer
 * Create a video-on-demand application with wowza  https://www.wowza.com/docs/how-to-set-up-video-on-demand-streaming
 * Place the ready videos that you want included in the application in your Wowza Directory: WowzaStreamingEngine4.7.1/content 
 * Make sure your Firewall settings are open for a private network
@@ -33,15 +33,16 @@ The challenges of this project are many. One is the hardware required, as for ea
 ### Download Unity and Configure on pc
 * Clone this repository and open it the project with Unity
 * In Unity, Assets -> Import Package -> Custom Package -> GoogleVRForUnity_1.70.0.unitypackage -> Import All Assets
-* Make sure you have the right android sdk installed on your laptop. 7
+* Make sure you have the right android sdk installed on your laptop. 
 	You can follow the instructions here: https://docs.unity3d.com/Manual/android-sdksetup.html
 	
-## If Video Doesn't Project Correctly
+### If Video Doesn't Project Correctly
 * Click on the Octahedron Sphere Tester Object
 * Go to VideoSphere and make sure GoogleVR/Video Unlit Shader is selected
 * Make sure stereomode is set to none
+* You can also flip the x-axis
 
-## Change Videos and Video Positions
+### Change Videos and Video Positions
 * In the project folder, go to Assets -> Resources -> VideoPositions.xml
 * Replace the name tag by the url of the video : http://[IP-Wowza-Server]:Port#/[wowza vod app name]/mp4:[videoname].mp4/manifest.mpd
 	(IP-Wowza-Server is found on the Wowza Engine homepage in the left column)
